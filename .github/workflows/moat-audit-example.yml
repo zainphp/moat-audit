@@ -10,6 +10,6 @@ permissions:
 
 jobs:
   audit:
-    uses: zainphp/moat-audit/.github/workflows/moat-audit.yml@1
+    uses: zainphp/moat-audit/.github/workflows/moat-audit.yml@main
     with:
       fail_on_findings: true
