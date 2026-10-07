@@ -1,0 +1,27 @@
+name: Moat audit
+
+on:
+  workflow_call:
+    inputs:
+      fail_on_findings:
+        description: Fail when Moat reports security findings.
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      github_token:
+        description: Optional admin-capable token for Moat.
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Moat audit action
+        uses: zainphp/moat-audit@1
+        with:
+          fail_on_findings: ${{ inputs.fail_on_findings }}
+          github_token: ${{ secrets.github_token }}

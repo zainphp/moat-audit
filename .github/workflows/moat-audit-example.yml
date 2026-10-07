@@ -10,9 +10,6 @@ permissions:
 
 jobs:
   audit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Audit repository
-        uses: zainphp/moat-audit@1
-        with:
-          fail_on_findings: true
+    uses: zainphp/moat-audit/.github/workflows/moat-audit.yml@1
+    with:
+      fail_on_findings: true
