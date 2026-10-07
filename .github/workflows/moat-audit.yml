@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Moat audit action
-        uses: zainphp/moat-audit@1
+        uses: zainphp/moat-audit@main
         with:
           fail_on_findings: ${{ inputs.fail_on_findings }}
           github_admin_token: ${{ secrets.github_admin_token }}
