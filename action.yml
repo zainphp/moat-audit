@@ -2,8 +2,8 @@ name: Moat audit
 description: Audit the current GitHub repository with Laravel Moat.
 
 inputs:
-  github_token:
-    description: Admin-capable token for Moat. Defaults to the caller's GITHUB_TOKEN.
+  github_admin_token:
+    description: Optional GitHub token with repository admin access. Defaults to GITHUB_TOKEN; pass secrets.GITHUB_ADMIN_TOKEN when needed.
     required: false
     default: ""
   fail_on_findings:
@@ -40,7 +40,7 @@ runs:
     - name: Audit current repository
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ inputs.github_token || github.token }}
+        GITHUB_TOKEN: ${{ inputs.github_admin_token || github.token }}
         FAIL_ON_FINDINGS: ${{ inputs.fail_on_findings }}
       run: |
         set -euo pipefail
